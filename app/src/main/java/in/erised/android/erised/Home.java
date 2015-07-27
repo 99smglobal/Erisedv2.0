@@ -9,6 +9,7 @@ import android.app.Activity;
 //import android.content.Intent;
 //import android.graphics.Typeface;
 
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
@@ -24,18 +25,14 @@ import android.widget.TextView;
 
 
 
-/**
- * Created by Akshay on 22/07/15.
- */
 public class Home extends Fragment {
 
-    TextView menTxt,womenTxt,kidTxt,offersTxt;
-    ImageView men,women,kids;
-//    Typeface tf= Typeface.createFromAsset(getActivity().getAssets(),"fonts/Walkway Black.ttf");
-
+    TextView menTxt,womenTxt,kidTxt,offersTxt, nullTxt;
+    ImageButton men,women,kids, offers;
+//
     public static Home newInstance() {
-        Home fragment = new Home();
-        return fragment;
+        return new Home();
+
     }
 
     public Home() {
@@ -43,9 +40,8 @@ public class Home extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.home, container, false);
+        return  inflater.inflate(R.layout.home, container, false);
 
-        return rootView;
 
 
     }
@@ -63,24 +59,33 @@ public class Home extends Fragment {
        // Drawable d  = getResources().getDrawable(R.drawable.kid);
        // iv.setImageDrawable(d);
 
+        Typeface tf= Typeface.createFromAsset(getActivity().getAssets(),"fonts/Walkway Black.ttf");
+
+
         menTxt= (TextView)getActivity().findViewById(R.id.men_txt);
-      //  menTxt.setTypeface(tf);
+       menTxt.setTypeface(tf);
         menTxt.setText("Men");
 
         womenTxt= (TextView)getActivity().findViewById(R.id.women_txt);
-     //   womenTxt.setTypeface(tf);
+       womenTxt.setTypeface(tf);
         womenTxt.setText("Women");
 
         kidTxt= (TextView) getActivity().findViewById(R.id.kids_txt);
-      //  kidTxt.setTypeface(tf);
+        kidTxt.setTypeface(tf);
         kidTxt.setText("Kids");
 
         offersTxt= (TextView) getActivity().findViewById(R.id.offers_txt);
-    //    offersTxt.setTypeface(tf);
+        offersTxt.setTypeface(tf);
         offersTxt.setText("Special Offers");
+
+        nullTxt= (TextView)getActivity().findViewById(R.id.null_txt);
+        nullTxt.setText("");
 
         men= (ImageButton) getActivity().findViewById(R.id.man_btn);
         women= (ImageButton) getActivity().findViewById(R.id.woman_btn);
+
+        offers= (ImageButton)getActivity().findViewById(R.id.offers_btn);
+
 
         men.setOnClickListener(new View.OnClickListener() {
             @Override
