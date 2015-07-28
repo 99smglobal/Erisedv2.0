@@ -3,6 +3,9 @@ package in.erised.android.erised;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -19,7 +22,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.appwidget.AppWidgetManager;
 
@@ -90,14 +96,23 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+       /* inflater = getLayoutInflater();
+        container= (ViewGroup) inflater.inflate(R.layout.fragment_navigation_drawer, mDrawerListView, false);
+        mDrawerListView.addHeaderView(container);
+       */
+        Resources res= getActivity().getApplicationContext().getResources();
+        TypedArray icons =res.obtainTypedArray(R.array.imageListArray);
         mDrawerListView = (ListView) inflater.inflate(
-                R.layout.fragment_navigation_drawer, container, false);
+                R.layout.fragment_navigation_drawer,container , false);
+
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItem(position);
             }
         });
+
+            /* Akshay's code.
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
@@ -109,6 +124,18 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_section3)
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+        */
+            String[] mListContent = { getString(R.string.title_section1),
+                    getString(R.string.title_section2),
+                    getString(R.string.title_section4),
+                    getString(R.string.title_section3)
+            };
+
+        listAdapter mlistAdapter = new listAdapter(getActivity(), mListContent, icons);
+        mDrawerListView.setAdapter(mlistAdapter);
+        mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+
+
         return mDrawerListView;
     }
 
