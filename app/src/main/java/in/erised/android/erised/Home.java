@@ -9,6 +9,7 @@ import android.app.Activity;
 //import android.content.Intent;
 //import android.graphics.Typeface;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -30,9 +31,10 @@ public class Home extends Fragment {
     TextView menTxt,womenTxt,kidTxt,offersTxt, nullTxt;
     ImageButton men,women,kids, offers;
     MainActivity x;
-    Men men1;
+    Men men1 = new Men();
     Women women1;
     Kids kids1;
+    MainActivity main;
 //
     public static Home newInstance() {
         return new Home();
@@ -103,6 +105,7 @@ public class Home extends Fragment {
                 //getActivity().onSectionAttached(2);
                 transaction1.addToBackStack(null);
                 transaction1.commit();
+
 
                /* Intent clicked= new Intent(getActivity().getApplicationContext(),Men.class);
                 startActivity(clicked);  */
