@@ -13,4 +13,22 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="Menu">
+        <item>Men</item>
+        <item>Women</item>
+        <item>Kids</item>
+        <item>Offers</item>>
+        <item>Near you</item>>
+    </string-array>
+    <string-array name="text1">
+        <item>Men</item>
+        <item>Women</item>
+        <item>Kids</item>
+        <item>Offers</item>>
+        <item>Near you</item>>
+    </string-array>
+
+
+
 </resources>

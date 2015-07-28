@@ -16,7 +16,9 @@ import android.widget.ImageView;
  */
 public class Men extends Fragment {
 
-    public static Men newInstance() {
+
+Men men;
+    public  static Men newInstance() {
         Men fragment = new Men();
         return fragment;
     }
@@ -32,10 +34,13 @@ public class Men extends Fragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
+    public  void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(1);
+        ((MainActivity) activity).onSectionAttached(2);
+
     }
+
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
