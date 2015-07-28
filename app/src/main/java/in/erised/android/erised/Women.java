@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,15 +36,23 @@ public class Women extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(1);
+        ((MainActivity) activity).onSectionAttached(4);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ChangeActionBarTitle();
         ImageView iv  = (ImageView)getActivity().findViewById(R.id.imageView2);
         Drawable d  = getResources().getDrawable(R.drawable.woman);
         iv.setImageDrawable(d);
+
+    }
+    public void ChangeActionBarTitle()
+    {
+
+        ActionBar a=((ActionBarActivity) getActivity()).getSupportActionBar();
+        a.setTitle("Women");
 
     }
 }

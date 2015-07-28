@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,9 @@ import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+
+
 /*
     TextView mTextview;
   */
@@ -104,6 +108,47 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                fragment =  Home.newInstance();
+                break;
+            case 1:
+                fragment = Men.newInstance();
+                break;
+            case 2:
+                fragment =  Women.newInstance();
+                break;
+            case 3:
+                fragment =  Kids.newInstance();
+                break;
+
+        }
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, fragment).commit();
+
+
+        }
+    }
+
+
+            // update selected item and title, then close the drawer
+           /* mDrawerList.setItemChecked(position, true);
+            mDrawerList.setSelection(position);
+            setTitle(navMenuTitles[position]);
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else {
+            // error in creating fragment
+            Log.e("MainActivity", "Error in creating fragment");
+        }
+
+  */
+
+
         // update the main content by replacing fragments
        /* FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -113,28 +158,36 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
    //selectItem(position);
 
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+     /*  FragmentManager fragmentManager = getSupportFragmentManager();
 
         if (position == 0) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, Home.newInstance())
+                    .replace(R.id.container, Home.newInstance(position))
                     .commit();
+                   setTitle("Home");
         } else if (position == 1) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, Men.newInstance())
+                    .replace(R.id.container, Men.newInstance(position))
                     .commit();
+            setTitle("Men");
         } else if (position == 3) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, Kids.newInstance())
+                    .replace(R.id.container, Kids.newInstance(position))
                     .commit();
+           setTitle("Kids");
         }
             else if (position == 2) {
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, Women.newInstance())
+                        .replace(R.id.container, Women.newInstance(position))
                         .commit();
+            setTitle("Women");
 
             }
-    }
+    }  */
+
+
+
+
     /*private void selectItem(int position) {
 
         // Handle Nav Options
@@ -161,7 +214,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     public void onSectionAttached(int position) {
         switch (position) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle="Home";
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
@@ -169,6 +222,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             case 3:
                 mTitle = getString(R.string.title_section3);
                 break;
+            case 4:
+                mTitle="Women";
         }
     }
 
@@ -236,7 +291,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            View rootView = inflater.inflate(R.layout.activity_main1, container, false);
             return rootView;
         }
 
